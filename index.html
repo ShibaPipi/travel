@@ -2,54 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>插槽（slot）</title>
     <script src="./vue.js"></script>
     <script src="./jQuery.js"></script>
 </head>
 <body>
-<div id="app">
-    <input type="text" v-model="inputValue">
-    <button v-on:click="handleBtnClick">submit</button>
-    <ul>
-        <!--        <li v-for="item in list">{{item}}</li>-->
-        <todo-item :content="item" :index="index" v-for="(item, index) in list" @delete="handleItemDelete"></todo-item>
-    </ul>
+<div id="root">
+    <child>
+        <template slot-scope="props">
+            <li>{{props.item}}</li>
+        </template>
+    </child>
 </div>
 <script>
-    // Vue.component("TodoItem", {
-    //     props: ["content"],
-    //     template: "<li>{{content}}</li>"
-    // });
-
-    var TodoItem = {
-        props: ["content", "index"],
-        template: "<li @click='handleItemClick'>{{content}}</li>",
-        methods: {
-            handleItemClick: function () {
-                this.$emit("delete", this.index);
-            }
-        }
-    };
-
-    var app = new Vue({
-        el: "#app",
-        components: {
-            TodoItem: TodoItem,
-        },
-        data: {
-            list: ["hello", "world", "dell", "lee"],
-            inputValue: "",
-        },
-        methods: {
-            handleBtnClick: function () {
-                this.list.push(this.inputValue);
-                this.inputValue = "";
-            },
-            handleItemDelete:function (index) {
-                this.list.splice(index, 1);
+    Vue.component("child", {
+        data: function () {
+            return {
+                list: [1, 2, 3, 4]
             }
         },
-    })
+        template: `<div><ul><slot v-for="item of list" :item="item"></slot></ul></div>`,
+        // methods: {
+        //     handleClick: function () {
+        //         this.bus.$emit("change", this.selfContent);
+        //     }
+        // },
+        // mounted: function () {
+        //     var that = this;
+        //     this.bus.$on("change", function (msg) {
+        //         that.selfContent = msg;
+        //     })
+        // }
+    });
+
+    var vm = new Vue({
+        el: "#root",
+        // methods: {
+        //     handleClick: function () {
+        //         alert("click")
+        //     }
+        // }
+    });
 </script>
 </body>
 </html>
