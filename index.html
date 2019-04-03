@@ -4,42 +4,49 @@
     <meta charset="UTF-8">
     <title>Vue-Transition-Group</title>
     <script src="./vue.js"></script>
-    <style>
-        .v-enter, .v-leave-to {
-            opacity: 0;
-        }
-
-        .v-enter-active, .v-leave-active {
-            transition: opacity 2s;
-        }
-    </style>
 </head>
 <body>
 <div id="root">
-    <transition-group>
-        <div v-for="item of list" :key="item.id">
-            {{item.title}}
-        </div>
-    </transition-group>
-    <button @click="handleBtnClick">add</button>
+    <fade :show="show">
+        <div>hello</div>
+    </fade>
+    <fade :show="show">
+        <h1>hello2</h1>
+    </fade>
+    <button @click="handleBtnClick">change</button>
 </div>
 <script>
-    // Vue.component("child", {
-    //     template: "<div>child</div>"
-    // });
-    var count = 0;
+    Vue.component("fade", {
+        props: ["show"],
+        template: `
+            <transition
+                @before-enter="handleBeforeEnter"
+                @enter="handleEnter"
+            >
+                <slot v-if="show"></slot>
+            </transition>
+        `,
+        methods: {
+            handleBeforeEnter: function (el) {
+                el.style.color = "red";
+            },
+            handleEnter: function (el, done) {
+                setTimeout(() => {
+                    el.style.color = "green";
+                    done();
+                }, 2000)
+            }
+        },
+    });
 
     var app = new Vue({
         el: "#root",
         data: {
-            list: []
+            show: true
         },
         methods: {
             handleBtnClick: function () {
-                this.list.push({
-                    id: count++,
-                    title: "hello"
-                })
+                this.show = !this.show;
             }
         }
     })
