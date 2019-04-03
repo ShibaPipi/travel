@@ -4,28 +4,17 @@
     <meta charset="UTF-8">
     <title>Vue-CSS-Transition</title>
     <script src="./vue.js"></script>
-    <link rel="stylesheet" type="text/css" href="./animate.css">
-    <style>
-        .fade-enter, .fade-leave-to {
-            opacity: 0;
-        }
-
-        .fade-enter-active, .fade-leave-active {
-            transition: opacity 3s;
-        }
-    </style>
+    <script src="./velocity.js"></script>
 </head>
 <body>
 <div id="root">
     <transition
-            :duration="{enter: 5000, leave: 10000}"
             name="fade"
-            appear
-            enter-active-class="animated swing fade-enter-active"
-            leave-active-class="animated shake fade-leave-active"
-            appear-active-class="animated swing"
+            @before-enter="handleBeforeEnter"
+            @enter="handleEnter"
+            @after-enter="handleAfterEnter"
     >
-        <div v-if="show">hello world</div>
+        <div v-show="show">hello world</div>
     </transition>
     <button @click="handleBtnClick">change</button>
 </div>
@@ -38,6 +27,15 @@
         methods: {
             handleBtnClick: function () {
                 this.show = !this.show;
+            },
+            handleBeforeEnter: function (el) {
+                el.style.opacity = 0;
+            },
+            handleEnter: function (el, done) {
+                Velocity(el, {opacity: 1}, {duration: 1000, complete: done})
+            },
+            handleAfterEnter: function (el) {
+                alert("动画结束")
             }
         },
     })

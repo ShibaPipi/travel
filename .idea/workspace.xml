@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="630">
+              <caret line="35" column="14" lean-forward="true" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -24,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -36,6 +36,7 @@
         <option value="$PROJECT_DIR$/jQuery.js" />
         <option value="$PROJECT_DIR$/jquery.html" />
         <option value="$PROJECT_DIR$/animate.css" />
+        <option value="$PROJECT_DIR$/velocity.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -109,7 +110,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11006000" />
+    <option name="totallyTimeSpent" value="13751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -174,10 +175,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/velocity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="5" column="48232" selection-start-line="5" selection-start-column="48232" selection-end-line="5" selection-end-column="48232" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="630">
+          <caret line="35" column="14" lean-forward="true" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
         </state>
       </provider>
     </entry>
