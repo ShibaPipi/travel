@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vue-CSS-Transition</title>
+    <title>Vue-Transition-Group</title>
     <script src="./vue.js"></script>
     <style>
         .v-enter, .v-leave-to {
@@ -10,34 +10,38 @@
         }
 
         .v-enter-active, .v-leave-active {
-            transition: opacity 1s;
+            transition: opacity 2s;
         }
     </style>
 </head>
 <body>
 <div id="root">
-    <transition mode="out-in">
-        <component :is="type"></component>
-    </transition>
-    <button @click="handleBtnClick">change</button>
+    <transition-group>
+        <div v-for="item of list" :key="item.id">
+            {{item.title}}
+        </div>
+    </transition-group>
+    <button @click="handleBtnClick">add</button>
 </div>
 <script>
-    Vue.component("child", {
-        template: "<div>child</div>"
-    });
-    Vue.component("child-one", {
-        template: "<div>child-one</div>"
-    });
+    // Vue.component("child", {
+    //     template: "<div>child</div>"
+    // });
+    var count = 0;
+
     var app = new Vue({
         el: "#root",
         data: {
-            type: "child"
+            list: []
         },
         methods: {
             handleBtnClick: function () {
-                this.type = this.type === "child" ? "child-one" : "child";
-            },
-        },
+                this.list.push({
+                    id: count++,
+                    title: "hello"
+                })
+            }
+        }
     })
 </script>
 </body>
