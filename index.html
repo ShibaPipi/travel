@@ -4,27 +4,13 @@
     <meta charset="UTF-8">
     <title>Vue-CSS-Transition</title>
     <script src="./vue.js"></script>
-    <style>
-        .fade-enter {
-            opacity: 0;
-        }
-
-        .fade-enter-active {
-            transition: opacity 3s;
-        }
-
-        .fade-leave-to {
-            opacity: 0;
-        }
-
-        .fade-leave-active {
-            transition: opacity 3s;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./animate.css">
 </head>
 <body>
 <div id="root">
-    <transition name="fade">
+    <transition name="fade"
+                enter-active-class="animated swing"
+                leave-active-class="animated shake">
         <div v-if="show">hello world</div>
     </transition>
     <button @click="handleBtnClick">change</button>
