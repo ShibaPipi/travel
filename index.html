@@ -2,51 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>Vue-CSS-Transition</title>
     <script src="./vue.js"></script>
-    <script src="./jQuery.js"></script>
+    <style>
+        .fade-enter {
+            opacity: 0;
+        }
+
+        .fade-enter-active {
+            transition: opacity 3s;
+        }
+
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-leave-active {
+            transition: opacity 3s;
+        }
+    </style>
 </head>
 <body>
-<div id="app">
-    <input type="text" v-model="inputValue">
-    <button v-on:click="handleBtnClick">submit</button>
-    <ul>
-        <!--        <li v-for="item in list">{{item}}</li>-->
-        <todo-item :content="item" :index="index" v-for="(item, index) in list" @delete="handleItemDelete"></todo-item>
-    </ul>
+<div id="root">
+    <transition name="fade">
+        <div v-if="show">hello world</div>
+    </transition>
+    <button @click="handleBtnClick">change</button>
 </div>
 <script>
-    // Vue.component("TodoItem", {
-    //     props: ["content"],
-    //     template: "<li>{{content}}</li>"
-    // });
-
-    var TodoItem = {
-        props: ["content", "index"],
-        template: "<li @click='handleItemClick'>{{content}}</li>",
-        methods: {
-            handleItemClick: function () {
-                this.$emit("delete", this.index);
-            }
-        }
-    };
-
     var app = new Vue({
-        el: "#app",
-        components: {
-            TodoItem: TodoItem,
-        },
+        el: "#root ",
         data: {
-            list: ["hello", "world", "dell", "lee"],
-            inputValue: "",
+            show: true
         },
         methods: {
             handleBtnClick: function () {
-                this.list.push(this.inputValue);
-                this.inputValue = "";
-            },
-            handleItemDelete:function (index) {
-                this.list.splice(index, 1);
+                this.show = !this.show;
             }
         },
     })
