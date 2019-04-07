@@ -22,7 +22,6 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/variable.styl'
-
   .header
     display: flex
     line-height: .86rem

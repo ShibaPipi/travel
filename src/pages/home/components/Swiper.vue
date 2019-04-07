@@ -24,6 +24,9 @@ export default {
       }, {
         id: '0002',
         imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/534106663f424042868365167e4a66ff.jpg_750x200_3ec12f21.jpg'
+      }, {
+        id: '0003',
+        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/8ae5f81584518970d5772a3756bfd02d.jpg_750x200_21c4379d.jpg'
       }]
     }
   }
@@ -33,14 +36,12 @@ export default {
 <style lang="stylus" scoped>
   .wrapper >>> .swiper-pagination-bullet-active
     background #fff !important
-
   .wrapper
     overflow hidden
     width 100%
     height 0
     padding-bottom 26.67%
     background #eee
-
     .swiper-img
       width 100%
 </style>
