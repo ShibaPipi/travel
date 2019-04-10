@@ -44,7 +44,7 @@ export default {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.sightName = data.siteName
+        this.sightName = data.sightName
         this.bannerImg = data.bannerImg
         this.galleryImgs = data.galleryImgs
         this.list = data.categoryList
