@@ -17,6 +17,7 @@ import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'Detail',
   components: {
@@ -26,11 +27,15 @@ export default {
   },
   data () {
     return {
+      lastId: '',
       sightName: '',
       bannerImg: '',
       galleryImgs: [],
       list: []
     }
+  },
+  computed: {
+    ...mapState(['id'])
   },
   methods: {
     getDetailInfo () {
@@ -52,12 +57,19 @@ export default {
     }
   },
   mounted () {
+    this.lastId = this.id
     this.getDetailInfo()
+  },
+  activated () {
+    if (this.lastId !== this.id) {
+      this.lastId = this.id
+      this.getDetailInfo()
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   .content
-    height 50rem
+    height 120rem
 </style>
